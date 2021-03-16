@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {% extends "base.html" %}
+    {% block title %}
+    blog titles
+    {% endblock %}
+    {% block content %}
+    <div class="row text-center vertical-middle-sm">o
+        <h1>博客部落</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+        <ul>
+        {% for blog in blogs %}
+            <li>{{ blog.title }}</li>
+            <li>{{ blog.body }}</li>
+        {% endfor %}
+        </ul>
+        </div>
+        <div class="col-xs-6 col-md-4">
+        <h2>友情赞助</h2>
+        <p>关注nick carter</p>
+        <img style="width:860px; height:564px" src="https://img-pre.ivsky.com/img/tupian/pre/202007/16/wanju_qingwa-001.jpg"/>
+            
+        </div>
+    </div>
+    {% endblock %}

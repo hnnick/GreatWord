@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    {% extends "base.html" %}
+
+    {% block title %}
+    博客内容详情
+    {% endblock %}
+    {% block content %}
+    <div class="row text-center vertical-middle-sm">
+        <h1>{{ article.title }}</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <p class="text-center"><span>{{ article.author.username }}</span>
+                <span>{{ publish }}</span style="margin-left:20px">
+            </p>
+        </div>
+        <div>{{ article.body }}</div>
+
+        <div class="col-xs-6 col-md-4">
+        <h2>友情赞助</h2>
+        <p>关注nick carter</p>
+        <img style="width:860px; height:564px" src="https://img-pre.ivsky.com/img/tupian/pre/202007/16/wanju_qingwa-001.jpg"/>
+            
+        </div>
+    </div>
+    {% endblock %}
