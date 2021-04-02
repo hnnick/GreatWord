@@ -21,4 +21,5 @@ urlpatterns = [
                                                                               'registration/password_change_done.html'),
         name='password_change_done'),
     url(r'^my-information/$', views.myself, name="my_information"),
+    url(r'^edit-my-information/$', views.myself_edit, name="edit_my_information")
 ]
