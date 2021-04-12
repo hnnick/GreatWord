@@ -52,7 +52,13 @@ $(window).load(function() {
             type: 'POST',
             data: {"img": img},
             success: function (e){
-                location.href= "{% url 'account:my_information' %}"
+                //location.href= "{% url 'account:my_information' %}"
+                //相应的视图函数中的return HttpResponse("1"),其数值在这里被应用
+                if(e=="1"){
+                    parent.location.reload()
+                }else{
+                    alert("对不起，图片未上传成功。")
+                }
             },
         });
 	})
