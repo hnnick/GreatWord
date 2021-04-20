@@ -3,7 +3,7 @@
 {% block title %}article column{% endblock %}
 {% block content %}
 <div>
-    <p class="text-right"><button class="btn btn-primary">add column</button> </p>
+    <p class="text-right"><button id="add_column" onclick="add_column()" class="btn btn-primary">add column</button> </p>
     <table class="table table-hover">
         <tr>
             <td>序号</td>
@@ -14,11 +14,51 @@
         <tr>
             <td>{{ forloop.counter }}</td>
             <td>{{  column.column }}</td>
-            <td>---</td>
+            <td>
+                <a name="edit" href="javascript:" onclick="edit_column(this, {{ column.id }})">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a name="delete" href="javascript:" onclick="del_column(this, {{ column.id }})">
+                    <span class="glyphicon glyphicon-trash" style="margin-left: 20px;"></span>
+                </a>
+            </td>
         </tr>
         {% empty %}
         <p>目前还没有设置栏目</p>
         {% endfor %}
     </table>
 </div>
+<script type="text/javascript" src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/layer.js' %}"></script>
+<script type="text/javascript">
+   function add_column(){
+           var index = layer.open({
+           type:1,
+           skin:"layui-layer-rim",
+           area:["400px", "200px"],
+           title: "新增栏目",
+           content: "<div class='text-center' style='margin-top:20px'>" +
+               "<p>请输入新的栏目名称</p><p><input id='id_column' type='text'></p></div>",
+           btn:["确定","取消"],
+           yes:function (index, layero){
+               column_name = $('#id_column').val();
+               $.ajax({
+                   url: "{% url 'article:article_column' %}",
+                   type: 'POST',
+                   data: {"column": column_name},
+                   success: function (e){
+                       if(e=="1"){
+                           parent.location.reload();
+                       }else {
+                           layer.msg("此栏目已存在，请更换名称")
+                       }
+                   },
+               });
+           },
+           btn2: function (index,layero){
+               layer.close(index);
+           }
+       });
+   }
+</script>
 {% endblock %}
