@@ -10,7 +10,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
                 <li><a href="{% url 'blog:blog_title' %}">网站首页</a></li>
-                <li><span> {{ user.username }}</span></li>
+                <li><span> <a href="{% url 'account:edit_my_information' %}">{{ user.username }}</a></span></li>
                 <li><a href="{% url 'account:user_login' %}">Logout</a></li>
             </ul>
         </div>
