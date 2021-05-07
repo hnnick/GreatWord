@@ -138,3 +138,5 @@ def redit_article(request, article_id):
             return HttpResponse("1")
         except:
             return HttpResponse("2")
+
+
