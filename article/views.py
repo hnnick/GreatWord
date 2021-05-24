@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404
 from .models import ArticleColumn, ArticlePost
 from .forms import ArticleColumnForm, ArticlePostForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -98,7 +98,7 @@ def article_list(request):
     return render(request, "article/article_list.html", {"articles": articles, "page": current_page})
 
 
-@login_required(login_url="/account/login")
+#@login_required(login_url="/account/login")
 def article_detail(request, id, slug):
     article = get_object_or_404(ArticlePost, id=id, slug=slug)
     return render(request, "article/article_detail.html", {"article": article})

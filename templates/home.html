@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+Home page
+{% endblock %}
+{% block content %}
+<div class="text-center">
+   <h1>欢迎你</h1>
+   <h3>来的主页</h3>
+   <h2>感谢进入流浪剑客主页</h2>
+   {% load staticfiles %}
+   <img src="{% static 'static/image/book.jpg' %}">
+</div>
+    
+{% endblock %}

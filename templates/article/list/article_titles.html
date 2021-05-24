@@ -10,7 +10,7 @@
        <a href="{{ article.get_url_path }}" class="list-group-item active">
         <h4 class="list-group-heading">{{ article.title }}</h4>
         <p class="list-group-item-text">{{ article.author.username }}</p>
-        <p class="list-group-item-text">概要:{{ article.body|slice:"70"|linebreaks }}</p>
+        <p class="list-group-ite,m-text">概要:{{ article.body|slice:"70"|linebreaks }}</p>
        </a>
     </div>
     {% endfor %}

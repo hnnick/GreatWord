@@ -127,4 +127,4 @@ STATICFILES_DIRS = (
      os.path.join(BASE_DIR,).replace('\\', '/'),
 )
 
-LOGIN_REDIRECT_URL = '/blog/'
+LOGIN_REDIRECT_URL = '/home/'

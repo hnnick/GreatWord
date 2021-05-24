@@ -7,6 +7,7 @@ from .forms import LoginForm, RegistrationForm, UserProfileForm, UserForm, UserI
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile, UserInfo
 from django.contrib.auth.models import User
+from django.urls import reverse #from django.core.urlresolvers import reverse---2.0
 
 
 def user_login(request):
@@ -40,7 +41,8 @@ def register(request):
             new_profile.user = new_user
             new_profile.save()
             UserInfo.objects.create(user=new_user)
-            return HttpResponse("successfully")
+            #return HttpResponse("successfully")
+            return HttpResponseRedirect(reverse("account:user_login"))
         else:
             return HttpResponse("sorry,you can not register.")
     else:
