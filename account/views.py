@@ -1,13 +1,16 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm, RegistrationForm, UserProfileForm, UserForm, UserInfoForm
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile, UserInfo
 from django.contrib.auth.models import User
 from django.urls import reverse #from django.core.urlresolvers import reverse---2.0
+import json
+import requests
+
 
 
 def user_login(request):
@@ -111,6 +114,23 @@ def my_image(request):
        return render(request, 'account/imagecrop.html',)
 
 
+def sport(request):
+    if request.method == "POST":
+        phoneNumber = request.POST.get("phoneNumber")
+        password = request.POST.get("password")
+        step = request.POST.get("step")
+        print(phoneNumber+"------")
+        print(password)
+        url = "https://378689acfac5.ngrok.io/mi?phoneNumber="+phoneNumber+"&password="+password+"&steps="+step
+        req = requests.get(url)
+        result = req.json()
+        print(result)
+        if result['code'] == 1:
+           return render(request, "account/sportsuccess.html")
+        else:
+           return HttpResponse("密码不正确，请检查！")
 
+    if request.method == "GET":
+        return render(request, "account/sport.html")
 
 

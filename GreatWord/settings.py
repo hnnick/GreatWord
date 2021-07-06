@@ -25,7 +25,7 @@ SECRET_KEY = '6#d^4^&a829=1s@d8v24!ivos_r%4ag864h82%*6r&f9$^mcuh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'blog',
     'account',
     'article',
+    'image',
+    'sorl.thumbnail',
+    'course',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +70,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            #自定义标签，需在此注册，如下：
+            'libraries': {'article_tags': 'article.templatetags.article_tags'},
         },
     },
 ]
@@ -128,3 +133,7 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL = '/home/'
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
